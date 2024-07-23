@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_seller_apps/core/core.dart';
 
 import '../../../core/assets/assets.dart';
+import 'login_page.dart';
 
 
 class SplashPage extends StatelessWidget {
@@ -8,10 +10,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(
-    //   const Duration(milliseconds: 200),
-    //   () => context.pushReplacement(const LoginPage()),
-    // );
+    Future.delayed(
+      const Duration(milliseconds: 2000),
+      () => context.pushReplacement(const LoginPage()),
+    );
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(130.0),
