@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/core.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -84,7 +85,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                context.push(const RegisterPage());
+              },
               child: const SizedBox(
                 height: 50.0,
                 child: Center(
