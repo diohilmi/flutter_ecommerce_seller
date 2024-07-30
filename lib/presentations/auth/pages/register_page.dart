@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_province/get_province_bloc.dart';
 
 import '../../../core/core.dart';
+import '../../../data/models/province_response_model.dart';
 // import '../../core/core.dart';
 // import 'register_verify_page.dart';
 
@@ -12,7 +15,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final dummy = ['Dummy 1', 'Dummy 2', 'Dummy 3'];
+  final dummy = ['Indonesia', 'Dummy 2', 'Dummy 3'];
   late final TextEditingController nameController;
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
@@ -36,6 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
     addressController = TextEditingController();
     zipCodeController = TextEditingController();
     phoneNumberController = TextEditingController();
+    context.read<GetProvinceBloc>().add(const GetProvinceEvent.getProvince());
     super.initState();
   }
 
@@ -106,15 +110,35 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           const SpaceHeight(12.0),
-          ValueListenableBuilder(
-            valueListenable: provinceNotifier,
-            builder: (context, value, _) => CustomDropdown(
-              value: value,
-              items: dummy,
-              label: 'Propinsi',
-              onChanged: (value) => countryNotifier.value = value ?? '',
-            ),
+
+          BlocBuilder<GetProvinceBloc, GetProvinceState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+                loaded: (data) {
+                  return CustomDropdown<Province>(
+                    value: data.first,
+                    items: data,
+                    label: 'Provinsi',
+                    onChanged: (value) => provinceNotifier.value = value ?? '',
+                    // context.read<GetCityBloc>().add(
+                    //       GetCityEvent.getCity(int.parse(value!.provinceId!)),
+                  );
+                },
+              );
+            },
           ),
+          // ValueListenableBuilder(
+          //   valueListenable: provinceNotifier,
+          //   builder: (context, value, _) => CustomDropdown(
+          //     value: value,
+          //     items: dummy,
+          //     label: 'Province',
+          //     onChanged: (value) => countryNotifier.value = value ?? '',
+          //   ),
+          // ),
           const SpaceHeight(12.0),
           ValueListenableBuilder(
             valueListenable: cityNotifier,

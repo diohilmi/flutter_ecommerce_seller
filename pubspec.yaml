@@ -31,19 +31,22 @@ dependencies:
   cached_network_image: ^3.3.1
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
   dotted_border: ^2.1.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.9
+  freezed_annotation: ^2.4.4
   google_fonts: ^6.1.0
+  http: ^1.2.2
   image_picker: ^1.1.2
   intl: ^0.19.0
 
 dev_dependencies:
+  freezed: ^2.5.2
   build_runner: ^2.4.6
   flutter_gen_runner: ^5.3.2
-  flutter_test:
-    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -51,10 +54,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 flutter_gen:
   output: lib/core/assets/
   integrations:
@@ -74,13 +78,10 @@ flutter:
     - assets/images/banks/
     - assets/icons/
     - assets/icons/alert/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
