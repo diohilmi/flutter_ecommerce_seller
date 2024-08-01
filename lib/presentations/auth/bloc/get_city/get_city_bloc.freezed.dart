@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_province_bloc.dart';
+part of 'get_city_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$GetProvinceEvent {
+mixin _$GetCityEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getProvince,
+    required TResult Function(int provinceId) getCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getProvince,
+    TResult? Function(int provinceId)? getCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getProvince,
+    TResult Function(int provinceId)? getCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetProvince value) getProvince,
+    required TResult Function(_GetCity value) getCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetProvince value)? getProvince,
+    TResult? Function(_GetCity value)? getCity,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetProvince value)? getProvince,
+    TResult Function(_GetCity value)? getCity,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetProvinceEventCopyWith<$Res> {
-  factory $GetProvinceEventCopyWith(
-          GetProvinceEvent value, $Res Function(GetProvinceEvent) then) =
-      _$GetProvinceEventCopyWithImpl<$Res, GetProvinceEvent>;
+abstract class $GetCityEventCopyWith<$Res> {
+  factory $GetCityEventCopyWith(
+          GetCityEvent value, $Res Function(GetCityEvent) then) =
+      _$GetCityEventCopyWithImpl<$Res, GetCityEvent>;
 }
 
 /// @nodoc
-class _$GetProvinceEventCopyWithImpl<$Res, $Val extends GetProvinceEvent>
-    implements $GetProvinceEventCopyWith<$Res> {
-  _$GetProvinceEventCopyWithImpl(this._value, this._then);
+class _$GetCityEventCopyWithImpl<$Res, $Val extends GetCityEvent>
+    implements $GetCityEventCopyWith<$Res> {
+  _$GetCityEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$GetProvinceEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$GetCityEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -92,18 +92,12 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+class _$StartedImpl implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'GetProvinceEvent.started'));
+  String toString() {
+    return 'GetCityEvent.started()';
   }
 
   @override
@@ -119,7 +113,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getProvince,
+    required TResult Function(int provinceId) getCity,
   }) {
     return started();
   }
@@ -128,7 +122,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getProvince,
+    TResult? Function(int provinceId)? getCity,
   }) {
     return started?.call();
   }
@@ -137,7 +131,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getProvince,
+    TResult Function(int provinceId)? getCity,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -150,7 +144,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetProvince value) getProvince,
+    required TResult Function(_GetCity value) getCity,
   }) {
     return started(this);
   }
@@ -159,7 +153,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetProvince value)? getProvince,
+    TResult? Function(_GetCity value)? getCity,
   }) {
     return started?.call(this);
   }
@@ -168,7 +162,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetProvince value)? getProvince,
+    TResult Function(_GetCity value)? getCity,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -178,78 +172,99 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   }
 }
 
-abstract class _Started implements GetProvinceEvent {
+abstract class _Started implements GetCityEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetProvinceImplCopyWith<$Res> {
-  factory _$$GetProvinceImplCopyWith(
-          _$GetProvinceImpl value, $Res Function(_$GetProvinceImpl) then) =
-      __$$GetProvinceImplCopyWithImpl<$Res>;
+abstract class _$$GetCityImplCopyWith<$Res> {
+  factory _$$GetCityImplCopyWith(
+          _$GetCityImpl value, $Res Function(_$GetCityImpl) then) =
+      __$$GetCityImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int provinceId});
 }
 
 /// @nodoc
-class __$$GetProvinceImplCopyWithImpl<$Res>
-    extends _$GetProvinceEventCopyWithImpl<$Res, _$GetProvinceImpl>
-    implements _$$GetProvinceImplCopyWith<$Res> {
-  __$$GetProvinceImplCopyWithImpl(
-      _$GetProvinceImpl _value, $Res Function(_$GetProvinceImpl) _then)
+class __$$GetCityImplCopyWithImpl<$Res>
+    extends _$GetCityEventCopyWithImpl<$Res, _$GetCityImpl>
+    implements _$$GetCityImplCopyWith<$Res> {
+  __$$GetCityImplCopyWithImpl(
+      _$GetCityImpl _value, $Res Function(_$GetCityImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? provinceId = null,
+  }) {
+    return _then(_$GetCityImpl(
+      null == provinceId
+          ? _value.provinceId
+          : provinceId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$GetProvinceImpl with DiagnosticableTreeMixin implements _GetProvince {
-  const _$GetProvinceImpl();
+class _$GetCityImpl implements _GetCity {
+  const _$GetCityImpl(this.provinceId);
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceEvent.getProvince()';
-  }
+  final int provinceId;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'GetProvinceEvent.getProvince'));
+  String toString() {
+    return 'GetCityEvent.getCity(provinceId: $provinceId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetProvinceImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetCityImpl &&
+            (identical(other.provinceId, provinceId) ||
+                other.provinceId == provinceId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, provinceId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCityImplCopyWith<_$GetCityImpl> get copyWith =>
+      __$$GetCityImplCopyWithImpl<_$GetCityImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getProvince,
+    required TResult Function(int provinceId) getCity,
   }) {
-    return getProvince();
+    return getCity(provinceId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getProvince,
+    TResult? Function(int provinceId)? getCity,
   }) {
-    return getProvince?.call();
+    return getCity?.call(provinceId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getProvince,
+    TResult Function(int provinceId)? getCity,
     required TResult orElse(),
   }) {
-    if (getProvince != null) {
-      return getProvince();
+    if (getCity != null) {
+      return getCity(provinceId);
     }
     return orElse();
   }
@@ -258,45 +273,50 @@ class _$GetProvinceImpl with DiagnosticableTreeMixin implements _GetProvince {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetProvince value) getProvince,
+    required TResult Function(_GetCity value) getCity,
   }) {
-    return getProvince(this);
+    return getCity(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetProvince value)? getProvince,
+    TResult? Function(_GetCity value)? getCity,
   }) {
-    return getProvince?.call(this);
+    return getCity?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetProvince value)? getProvince,
+    TResult Function(_GetCity value)? getCity,
     required TResult orElse(),
   }) {
-    if (getProvince != null) {
-      return getProvince(this);
+    if (getCity != null) {
+      return getCity(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetProvince implements GetProvinceEvent {
-  const factory _GetProvince() = _$GetProvinceImpl;
+abstract class _GetCity implements GetCityEvent {
+  const factory _GetCity(final int provinceId) = _$GetCityImpl;
+
+  int get provinceId;
+  @JsonKey(ignore: true)
+  _$$GetCityImplCopyWith<_$GetCityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$GetProvinceState {
+mixin _$GetCityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Province> results) loaded,
+    required TResult Function(List<City> results) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -304,7 +324,7 @@ mixin _$GetProvinceState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Province> results)? loaded,
+    TResult? Function(List<City> results)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -312,7 +332,7 @@ mixin _$GetProvinceState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Province> results)? loaded,
+    TResult Function(List<City> results)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -345,16 +365,16 @@ mixin _$GetProvinceState {
 }
 
 /// @nodoc
-abstract class $GetProvinceStateCopyWith<$Res> {
-  factory $GetProvinceStateCopyWith(
-          GetProvinceState value, $Res Function(GetProvinceState) then) =
-      _$GetProvinceStateCopyWithImpl<$Res, GetProvinceState>;
+abstract class $GetCityStateCopyWith<$Res> {
+  factory $GetCityStateCopyWith(
+          GetCityState value, $Res Function(GetCityState) then) =
+      _$GetCityStateCopyWithImpl<$Res, GetCityState>;
 }
 
 /// @nodoc
-class _$GetProvinceStateCopyWithImpl<$Res, $Val extends GetProvinceState>
-    implements $GetProvinceStateCopyWith<$Res> {
-  _$GetProvinceStateCopyWithImpl(this._value, this._then);
+class _$GetCityStateCopyWithImpl<$Res, $Val extends GetCityState>
+    implements $GetCityStateCopyWith<$Res> {
+  _$GetCityStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -371,7 +391,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$GetProvinceStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$GetCityStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -380,18 +400,12 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'GetProvinceState.initial'));
+  String toString() {
+    return 'GetCityState.initial()';
   }
 
   @override
@@ -408,7 +422,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Province> results) loaded,
+    required TResult Function(List<City> results) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -419,7 +433,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Province> results)? loaded,
+    TResult? Function(List<City> results)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -430,7 +444,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Province> results)? loaded,
+    TResult Function(List<City> results)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -478,7 +492,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements GetProvinceState {
+abstract class _Initial implements GetCityState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -491,7 +505,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$GetProvinceStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$GetCityStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -500,18 +514,12 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+class _$LoadingImpl implements _Loading {
   const _$LoadingImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'GetProvinceState.loading'));
+  String toString() {
+    return 'GetCityState.loading()';
   }
 
   @override
@@ -528,7 +536,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Province> results) loaded,
+    required TResult Function(List<City> results) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -539,7 +547,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Province> results)? loaded,
+    TResult? Function(List<City> results)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -550,7 +558,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Province> results)? loaded,
+    TResult Function(List<City> results)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -598,7 +606,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   }
 }
 
-abstract class _Loading implements GetProvinceState {
+abstract class _Loading implements GetCityState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -608,12 +616,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Province> results});
+  $Res call({List<City> results});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$GetProvinceStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$GetCityStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -628,35 +636,27 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
-              as List<Province>,
+              as List<City>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
-  const _$LoadedImpl(final List<Province> results) : _results = results;
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(final List<City> results) : _results = results;
 
-  final List<Province> _results;
+  final List<City> _results;
   @override
-  List<Province> get results {
+  List<City> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_results);
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceState.loaded(results: $results)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GetProvinceState.loaded'))
-      ..add(DiagnosticsProperty('results', results));
+  String toString() {
+    return 'GetCityState.loaded(results: $results)';
   }
 
   @override
@@ -682,7 +682,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Province> results) loaded,
+    required TResult Function(List<City> results) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(results);
@@ -693,7 +693,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Province> results)? loaded,
+    TResult? Function(List<City> results)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(results);
@@ -704,7 +704,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Province> results)? loaded,
+    TResult Function(List<City> results)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -752,10 +752,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   }
 }
 
-abstract class _Loaded implements GetProvinceState {
-  const factory _Loaded(final List<Province> results) = _$LoadedImpl;
+abstract class _Loaded implements GetCityState {
+  const factory _Loaded(final List<City> results) = _$LoadedImpl;
 
-  List<Province> get results;
+  List<City> get results;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -772,7 +772,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$GetProvinceStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$GetCityStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -794,23 +794,15 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
+class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GetProvinceState.error(message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GetProvinceState.error'))
-      ..add(DiagnosticsProperty('message', message));
+  String toString() {
+    return 'GetCityState.error(message: $message)';
   }
 
   @override
@@ -835,7 +827,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Province> results) loaded,
+    required TResult Function(List<City> results) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -846,7 +838,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Province> results)? loaded,
+    TResult? Function(List<City> results)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -857,7 +849,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Province> results)? loaded,
+    TResult Function(List<City> results)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -905,7 +897,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements GetProvinceState {
+abstract class _Error implements GetCityState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

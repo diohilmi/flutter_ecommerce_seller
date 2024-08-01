@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_city/get_city_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_province/get_province_bloc.dart';
 
 import '../../../core/core.dart';
+import '../../../data/models/city_response_model.dart';
 import '../../../data/models/province_response_model.dart';
 // import '../../core/core.dart';
 // import 'register_verify_page.dart';
@@ -122,14 +124,51 @@ class _RegisterPageState extends State<RegisterPage> {
                     value: data.first,
                     items: data,
                     label: 'Provinsi',
-                    onChanged: (value) => provinceNotifier.value = value ?? '',
-                    // context.read<GetCityBloc>().add(
-                    //       GetCityEvent.getCity(int.parse(value!.provinceId!)),
+                    onChanged: (value) => 
+                      context.read<GetCityBloc>().add(
+                        GetCityEvent.getCity(int.parse(value!.provinceId!)),
+                      ),
                   );
                 },
               );
             },
           ),
+          const SpaceHeight(12.0),
+          BlocBuilder<GetCityBloc, GetCityState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Center(child: CircularProgressIndicator());
+                },
+                loaded: (data) {
+                  return CustomDropdown<City>(
+                    value: data.first,
+                    items: data,
+                    label: 'Kota / Kabupaten',
+                    onChanged: (value) => subdistrictNotifier.value = value ?? '',
+                  );
+                },
+                
+              );
+            },
+          ),
+            //   return CustomDropdown<City>(
+            //             value: value,
+            //             items: dummy,
+            //             label: 'Kecamatan',
+            //             onChanged: (value) => countryNotifier.value = value ?? '',
+            //           );
+            // },
+          // ),
+          // ValueListenableBuilder(
+          //   valueListenable: subdistrictNotifier,
+          //   builder: (context, value, _) => CustomDropdown(
+          //     value: value,
+          //     items: dummy,
+          //     label: 'Kecamatan',
+          //     onChanged: (value) => countryNotifier.value = value ?? '',
+          //   ),
+          // ),
           // ValueListenableBuilder(
           //   valueListenable: provinceNotifier,
           //   builder: (context, value, _) => CustomDropdown(
@@ -149,16 +188,16 @@ class _RegisterPageState extends State<RegisterPage> {
               onChanged: (value) => countryNotifier.value = value ?? '',
             ),
           ),
-          const SpaceHeight(12.0),
-          ValueListenableBuilder(
-            valueListenable: subdistrictNotifier,
-            builder: (context, value, _) => CustomDropdown(
-              value: value,
-              items: dummy,
-              label: 'Kecamatan',
-              onChanged: (value) => countryNotifier.value = value ?? '',
-            ),
-          ),
+          // const SpaceHeight(12.0),
+          // ValueListenableBuilder(
+          //   valueListenable: subdistrictNotifier,
+          //   builder: (context, value, _) => CustomDropdown(
+          //     value: value,
+          //     items: dummy,
+          //     label: 'Kecamatan',
+          //     onChanged: (value) => countryNotifier.value = value ?? '',
+          //   ),
+          // ),
           const SpaceHeight(12.0),
           CustomTextField(
             controller: addressController,
