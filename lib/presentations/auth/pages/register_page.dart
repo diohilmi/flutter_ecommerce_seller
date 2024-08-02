@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/data/models/subdistrict_response_mode.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_city/get_city_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_province/get_province_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_subdistrict/get_subdistrict_bloc.dart';
 
 import '../../../core/core.dart';
 import '../../../data/models/city_response_model.dart';
@@ -138,14 +140,39 @@ class _RegisterPageState extends State<RegisterPage> {
             builder: (context, state) {
               return state.maybeWhen(
                 orElse: () {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Text('Provinsi belum dipilih');
                 },
                 loaded: (data) {
                   return CustomDropdown<City>(
                     value: data.first,
                     items: data,
                     label: 'Kota / Kabupaten',
-                    onChanged: (value) => subdistrictNotifier.value = value ?? '',
+                    onChanged: (value) {
+                      context.read<GetSubdistrictBloc>().add(
+                              GetSubdistrictEvent.getSubdistrict(
+                                int.parse(value!.cityId!),
+                              ),
+                            );
+                    },
+                  );
+                },
+                
+              );
+            },
+          ),
+          const SpaceHeight(12.0),
+          BlocBuilder<GetSubdistrictBloc, GetSubdistrictState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Text('Kota / Kabupaten belum dipilih');
+                },
+                loaded: (data) {
+                  return CustomDropdown<Subdistrict>(
+                    value: data.first,
+                    items: data,
+                    label: 'Kecamatan',
+                    onChanged: (value) {},
                   );
                 },
                 
@@ -178,16 +205,16 @@ class _RegisterPageState extends State<RegisterPage> {
           //     onChanged: (value) => countryNotifier.value = value ?? '',
           //   ),
           // ),
-          const SpaceHeight(12.0),
-          ValueListenableBuilder(
-            valueListenable: cityNotifier,
-            builder: (context, value, _) => CustomDropdown(
-              value: value,
-              items: dummy,
-              label: 'Kota',
-              onChanged: (value) => countryNotifier.value = value ?? '',
-            ),
-          ),
+          // const SpaceHeight(12.0),
+          // ValueListenableBuilder(
+          //   valueListenable: cityNotifier,
+          //   builder: (context, value, _) => CustomDropdown(
+          //     value: value,
+          //     items: dummy,
+          //     label: 'Kota',
+          //     onChanged: (value) => countryNotifier.value = value ?? '',
+          //   ),
+          // ),
           // const SpaceHeight(12.0),
           // ValueListenableBuilder(
           //   valueListenable: subdistrictNotifier,
