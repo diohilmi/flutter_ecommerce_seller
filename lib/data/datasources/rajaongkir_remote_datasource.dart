@@ -35,7 +35,7 @@ class RajaongkirRemoteDatasource {
     if (response.statusCode == 200) {
       return Right(CityResponseModel.fromJson(response.body));
     } else {
-      return const Left("error get c");
+      return const Left("error get province");
     }
   }
 
@@ -52,7 +52,7 @@ class RajaongkirRemoteDatasource {
     if (response.statusCode == 200) {
       return Right(SubdistrictResponseModel.fromJson(response.body));
     } else {
-      return const Left("error get c");
+      return const Left("error get city");
     }
   }
 

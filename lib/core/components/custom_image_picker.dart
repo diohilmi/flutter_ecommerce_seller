@@ -9,7 +9,7 @@ import 'spaces.dart';
 
 class CustomImagePicker extends StatefulWidget {
   final String label;
-  final void Function(String? imagePath) onChanged;
+  final void Function(XFile? imagePath) onChanged;
   final String? imageUrl;
   final bool showLabel;
   final double borderRadius;
@@ -36,7 +36,7 @@ class _CustomImagePickerState extends State<CustomImagePicker> {
 
     setState(() {
       _image = image;
-      widget.onChanged(image?.path);
+      widget.onChanged(image);
     });
   }
 

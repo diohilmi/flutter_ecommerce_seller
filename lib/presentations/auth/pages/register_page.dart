@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/data/models/request/register_request_model.dart';
+import 'package:flutter_ecommerce_seller_apps/data/models/response/register_response_model.dart';
 import 'package:flutter_ecommerce_seller_apps/data/models/subdistrict_response_mode.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_city/get_city_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_province/get_province_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_subdistrict/get_subdistrict_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/core.dart';
 import '../../../data/models/city_response_model.dart';
 import '../../../data/models/province_response_model.dart';
+import '../bloc/register/register_bloc.dart';
+import 'login_page.dart';
 // import '../../core/core.dart';
 // import 'register_verify_page.dart';
 
@@ -30,6 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late final TextEditingController addressController;
   late final TextEditingController zipCodeController;
   late final TextEditingController phoneNumberController;
+  XFile? image;
 
   @override
   void initState() {
@@ -126,10 +132,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     value: data.first,
                     items: data,
                     label: 'Provinsi',
-                    onChanged: (value) => 
+                    onChanged: (value) => {
+                      provinceNotifier.value = value!.province!,
                       context.read<GetCityBloc>().add(
-                        GetCityEvent.getCity(int.parse(value!.provinceId!)),
-                      ),
+                            GetCityEvent.getCity(int.parse(value.provinceId!)),
+                          ),
+                    },
                   );
                 },
               );
@@ -148,15 +156,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     items: data,
                     label: 'Kota / Kabupaten',
                     onChanged: (value) {
+                      cityNotifier.value = value!.cityId!;
                       context.read<GetSubdistrictBloc>().add(
-                              GetSubdistrictEvent.getSubdistrict(
-                                int.parse(value!.cityId!),
-                              ),
-                            );
+                            GetSubdistrictEvent.getSubdistrict(
+                              int.parse(value.cityId!),
+                            ),
+                          );
                     },
                   );
                 },
-                
               );
             },
           ),
@@ -172,20 +180,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     value: data.first,
                     items: data,
                     label: 'Kecamatan',
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      subdistrictNotifier.value = value!.subdistrictId!;
+                    },
                   );
                 },
-                
               );
             },
           ),
-            //   return CustomDropdown<City>(
-            //             value: value,
-            //             items: dummy,
-            //             label: 'Kecamatan',
-            //             onChanged: (value) => countryNotifier.value = value ?? '',
-            //           );
-            // },
+          //   return CustomDropdown<City>(
+          //             value: value,
+          //             items: dummy,
+          //             label: 'Kecamatan',
+          //             onChanged: (value) => countryNotifier.value = value ?? '',
+          //           );
+          // },
           // ),
           // ValueListenableBuilder(
           //   valueListenable: subdistrictNotifier,
@@ -249,15 +258,65 @@ class _RegisterPageState extends State<RegisterPage> {
           const SpaceHeight(12.0),
           CustomImagePicker(
             label: 'Foto Toko',
-            onChanged: (imagePath) {},
+            onChanged: (imagePath) {
+              image = imagePath;
+            },
           ),
           const SpaceHeight(38.0),
-          Button.filled(
-            onPressed: () {
-              // context.push(const RegisterVerifyPage());
+          BlocListener<RegisterBloc, RegisterState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                loaded: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  );
+                },
+                error: (message) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message),
+                      backgroundColor: AppColors.red,
+                    ),
+                  );
+                },
+              );
             },
-            label: 'Create Account',
-            borderRadius: 99.0,
+            child: BlocBuilder<RegisterBloc, RegisterState>(
+              builder: (context, state) {
+                return state.maybeWhen(orElse: () {
+                  return Button.filled(
+                    onPressed: () {
+                      final data = RegisterRequestModel(
+                        name: nameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                        phone: phoneNumberController.text,
+                        address: addressController.text,
+                        country: countryNotifier.value.toString(),
+                        province: countryNotifier.value.toString(),
+                        city: countryNotifier.value.toString(),
+                        district: countryNotifier.value.toString(),
+                        postalCode: zipCodeController.text,
+                        image: image!,
+                      );
+                      context
+                          .read<RegisterBloc>()
+                          .add(RegisterEvent.register(data));
+                    },
+                    label: 'Create Account',
+                    borderRadius: 99.0,
+                  );
+                }, loading: () {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                });
+              },
+            ),
           ),
           const SpaceHeight(16.0),
           InkWell(
