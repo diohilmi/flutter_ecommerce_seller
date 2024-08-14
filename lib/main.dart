@@ -4,6 +4,7 @@ import 'package:flutter_ecommerce_seller_apps/data/datasources/auth_remote_datas
 import 'package:flutter_ecommerce_seller_apps/data/datasources/rajaongkir_remote_datasource.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_city/get_city_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/get_province/get_province_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/register/register_bloc.dart';
 import 'package:flutter_ecommerce_seller_apps/presentations/auth/pages/splash_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RegisterBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(AuthRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

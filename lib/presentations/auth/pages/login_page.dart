@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_seller_apps/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_ecommerce_seller_apps/presentations/auth/bloc/login/login_bloc.dart';
 
 import '../../../core/core.dart';
+import '../../home/pages/main_page.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -53,12 +57,44 @@ class _LoginPageState extends State<LoginPage> {
           ),
           const SpaceHeight(12.0),
           const SpaceHeight(50.0),
-          Button.filled(
-            onPressed: () {
-              // context.pushReplacement(const MainPage());
+          BlocConsumer<LoginBloc, LoginState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                success: (data) async {
+                  await AuthLocalDatasource().saveAuthData(data);
+                  context.pushReplacement(const MainPage());
+                },
+                error: (message) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message),
+                      backgroundColor:  AppColors.red,
+                    ),
+                  );
+                },
+              );
             },
-            label: 'Login',
-            borderRadius: 99.0,
+            builder: (context, state) {
+              return state.maybeWhen(orElse: () {
+                return Button.filled(
+                  onPressed: () {
+                    context.read<LoginBloc>().add(
+                          LoginEvent.login(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          ),
+                        );
+                  },
+                  label: 'Login',
+                  borderRadius: 99.0,
+                );
+              }, loading: () {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              });
+            },
           ),
           const SpaceHeight(12.0),
           // Button.filled(
