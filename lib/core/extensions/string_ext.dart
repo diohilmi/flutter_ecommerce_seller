@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 extension StringExt on String {
   /// hello_world = Hello World
   String get toTitleCase {
@@ -12,5 +14,14 @@ extension StringExt on String {
 
     // Join words with space
     return capitalizedWords.join(' ');
+  }
+
+  String get currencyFormatRp {
+    final numberFormat = NumberFormat.currency(
+      locale: 'id',
+      symbol: 'Rp. ',
+      decimalDigits: 0,
+    );
+    return numberFormat.format(double.parse(this));
   }
 }
